@@ -1,0 +1,23 @@
+{
+  "name": "webgenwfrp4ed",
+  "version": "1.0.0",
+  "description": "Simple JavaScript web character generator for Warhammer Fantasy Roleplay 4th edition.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo starting;reload -b & watchify index.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claydegruchy/WebGenWFRP4Ed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claydegruchy/WebGenWFRP4Ed/issues"
+  },
+  "homepage": "https://github.com/claydegruchy/WebGenWFRP4Ed#readme",
+  "dependencies": {
+    "faker": "^5.1.0"
+  }
+}

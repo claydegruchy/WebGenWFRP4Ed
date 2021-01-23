@@ -13,16 +13,21 @@ th {
 
 <head>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
+</script>
+
     <title>WFRP 4th Edition Random character</title>
     <script>
+        var myrng = new Math.seedrandom('hello.');
+
         //<![CDATA[
 function roll1d10(){
 "use strict";
- return Math.floor(Math.random() * 10) + 1;
+ return Math.floor(myrng() * 10) + 1;
 }
 function roll2d10(){
 "use strict";
- return Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + 2;
+ return Math.floor(myrng() * 10) + Math.floor(myrng() * 10) + 2;
 }
 function rollXd10(x){
 "use strict";
@@ -35,11 +40,11 @@ function rollXd10(x){
 }
 function roll1d100(){
 "use strict";
- return Math.floor(Math.random() * 100) + 1;
+ return Math.floor(myrng() * 100) + 1;
 }
 function randPick(myArray) {
     var l = myArray.length;
-    var i = Math.floor(Math.random() * l);
+    var i = Math.floor(myrng() * l);
     return myArray[i];
 }
 var NameTxt = "";
@@ -2740,7 +2745,7 @@ function parseInicialTalent(TalentArray) {
                     refreshCharacterDisplay ();
                    ch = (confirm (TalentArray[x])?0:1);
                } else {
-                   ch = Math.floor(Math.random() * Talents.length );
+                   ch = Math.floor(myrng() * Talents.length );
                }
            TalentArray[x] = Talents [ch];
       }
@@ -2751,7 +2756,7 @@ function parseInicialTalent(TalentArray) {
      return TalentArray;
 }
 function splitFateResilience ( extraPoints ) {
-    var x = Math.floor(Math.random() * extraPoints ) +1;
+    var x = Math.floor(myrng() * extraPoints ) +1;
     return [ x, extraPoints - x ]
 }
 function parseTalent2Stats (TalentArray) {
@@ -2806,7 +2811,7 @@ function parseTalentAny (TalentArray) {
         if (TalentArray[x].indexOf("(Any one)") > -1 ) {
            for (y in AnyTalents) {
                if ( (TalentArray[x]).localeCompare(AnyTalents[y][0]) == 0  ) {
-                TalentArray[x] = AnyTalents[y][ Math.floor( Math.random() * ( AnyTalents[y].length - 1 ) + 1 ) ];
+                TalentArray[x] = AnyTalents[y][ Math.floor( myrng() * ( AnyTalents[y].length - 1 ) + 1 ) ];
                 }
            }
        }
@@ -2820,7 +2825,7 @@ function parseSkillAny (SkillArray) {
         if (SkillArray[x].indexOf("(Any one)") > -1) {
            for (y in AnySkills) {
                if ((SkillArray[x]).localeCompare(AnySkills[y][0]) == 0 ) {
-                SkillArray[x] = AnySkills[y][ Math.floor( Math.random() * ( AnySkills[y].length - 1 ) + 1 ) ];
+                SkillArray[x] = AnySkills[y][ Math.floor( myrng() * ( AnySkills[y].length - 1 ) + 1 ) ];
                 }
            }
        }
@@ -2861,7 +2866,7 @@ function parseOrParenthesis(NameArray) {
                if (document.getElementById("choiceCheck").checked == true)  {
                    ch = (confirm (NameArray[i])?0:1);
                } else {
-                   ch = Math.floor(Math.random() * Pick.length );
+                   ch = Math.floor(myrng() * Pick.length );
                }
                 NameArray[i] = Base[0] + " ("+ Pick [ ch ] + ")";
             }
@@ -2932,7 +2937,7 @@ function generatePersonality(number=3) {
 
     // Shuffle array
     var tar = traits
-const shuffled = tar.sort(() => 0.5 - Math.random());
+const shuffled = tar.sort(() => 0.5 - myrng());
 
 // Get sub-array of first n elements after shuffled
 let selected = shuffled.slice(0, number);
@@ -2944,7 +2949,7 @@ function generateQuirks(number=2) {
     
         // Shuffle array
         var tar = quirks
-const shuffled = tar.sort(() => 0.5 - Math.random());
+const shuffled = tar.sort(() => 0.5 - myrng());
 
 // Get sub-array of first n elements after shuffled
 let selected = shuffled.slice(0, number);
@@ -2958,7 +2963,7 @@ function refreshCharacterDisplay () {
     document.getElementById("careerB").innerHTML = CareerTxt;
     document.getElementById("xpB").innerHTML = XpTxt;
     document.getElementById("statsB").innerHTML = StatsTxt;
-    document.getElementById("skillsB").innerHTML = SkillTxt;
+    // document.getElementById("skillsB").innerHTML = SkillTxt;
     document.getElementById("fateresilienceB").innerHTML = FateResilienceTxt;
     document.getElementById("talentsB").innerHTML = TalentTxt;
     document.getElementById("trappingsB").innerHTML = TrappingTxt;
@@ -2991,25 +2996,25 @@ if  (SpeciesChoice>0) {
 console.log(SpeciesN);
 SpeciesTxt = SpeciesAll[ SpeciesN - 1 ];
 console.log(SpeciesTxt);
-Sex = Math.floor(Math.random() * 2);
+Sex = Math.floor(myrng() * 2);
 var NamesSpecies = NamesAll[Sex][SpeciesN - 1 ];
 var SurnamesSpecies;
 /* Dwarves could get Icelandic style surnames, but from either 66% MAle 33% female */
-if ((SpeciesN == 2) && (Math.random() > .5)) {
-    SurnamesSpecies = NamesAll[Math.floor(Math.random() * 3 / 2)][SpeciesN - 1 ].slice();
-    var suffix = SurnameSuffixDwarvenAll[Sex][ Math.floor(Math.random() * SurnameSuffixDwarvenAll[Sex].length)];
+if ((SpeciesN == 2) && (myrng() > .5)) {
+    SurnamesSpecies = NamesAll[Math.floor(myrng() * 3 / 2)][SpeciesN - 1 ].slice();
+    var suffix = SurnameSuffixDwarvenAll[Sex][ Math.floor(myrng() * SurnameSuffixDwarvenAll[Sex].length)];
         for(i=0;i<SurnamesSpecies.length;i++){
             SurnamesSpecies[i] = SurnamesSpecies[i] + suffix;
         }   
 } else {
     SurnamesSpecies  = SurnamesAll[SpeciesN - 1 ];
 }
-NameTxt = NamesSpecies[ Math.floor(Math.random() * NamesSpecies.length) ] + " " 
-    +  SurnamesSpecies[ Math.floor(Math.random() * SurnamesSpecies.length) ] ;
+NameTxt = NamesSpecies[ Math.floor(myrng() * NamesSpecies.length) ] + " " 
+    +  SurnamesSpecies[ Math.floor(myrng() * SurnamesSpecies.length) ] ;
 SkillStart = SkillStartAll[ SpeciesN - 1 ];
 console.log(SkillStart);
 for (i = 0; i < 6; i += 1) {
-     var skrandom = Math.floor(Math.random() * SkillStart.length);
+     var skrandom = Math.floor(myrng() * SkillStart.length);
      SkillNames.push ( SkillStart.splice (skrandom , 1)[0] );
      var skvar;
      if ( i < 3 ) {
@@ -3097,9 +3102,9 @@ var randadvChoice = [ [5,0,0],
 [3,1,1],
 [3,2,0],
 [2,2,1] ];
-var randAdv = randadvChoice[ Math.floor(Math.random() * 5) ];
+var randAdv = randadvChoice[ Math.floor(myrng() * 5) ];
 for (i = 0; i < 3; i += 1) {
-    var statrand = Math.floor(Math.random() * sta.length);
+    var statrand = Math.floor(myrng() * sta.length);
     StatsAdvance [  sta.splice (statrand , 1) ] = randAdv[i];
 }
 /* Split the extra fate/resilience */
@@ -3119,15 +3124,15 @@ var randskiChoice =  [
 [10,10,10,6,1,1,1,1],
 [10,10,10,10,0,0,0,0]
 ];
-var randSki = randskiChoice[ Math.floor(Math.random() * randskiChoice.length ) ];
+var randSki = randskiChoice[ Math.floor(myrng() * randskiChoice.length ) ];
 for (i = 0; i < 8; i += 1) {
-     var skirand = Math.floor(Math.random() * ski.length);
+     var skirand = Math.floor(myrng() * ski.length);
      SkillNames.push ( ski.splice (skirand , 1)[0] );
      var skvar = randSki[i]; 
      SkillValues.push ( skvar );
 }
 console.log(SkillNames);
-var randTalent = Math.floor(Math.random() * 4);
+var randTalent = Math.floor(myrng() * 4);
 TalentNames.push( CareerTalents[CareerN][randTalent]);
 TalentValues.push(1);
 StatsTalents = parseTalent2Stats(TalentNames);
@@ -3143,11 +3148,11 @@ TalentValues = TalentNamesValue[1].slice(0);
 /* After getting talents we check if we are an human noble or have nobleblood*/
 /*SurnameSuffixHumanNoble*/
 if ((SpeciesN == 1) && ((CareerName == "Noble") || (TalentNames.includes("Noble Blood")))) {
-    NameTxt = NameTxt.replace(" "," von ") + SurnameSuffixHumanNoble[Math.floor(Math.random() * SurnameSuffixHumanNoble.length)];
+    NameTxt = NameTxt.replace(" "," von ") + SurnameSuffixHumanNoble[Math.floor(myrng() * SurnameSuffixHumanNoble.length)];
 };
 /*Dooming*/
 if (TalentNames.includes("Doomed")) {
- DoomingTxt = DoomingsAll[Math.floor(Math.random() * DoomingsAll.length)];
+ DoomingTxt = DoomingsAll[Math.floor(myrng() * DoomingsAll.length)];
 };
 
 var SkillNamesValue = dedupeNameValue(SkillNames, SkillValues );
@@ -3254,11 +3259,11 @@ const capture = () => {
     <button type="button" onclick="generateChar(1)">Generate Human!</button>
     <button type="button" onclick="capture();generateChar(1)">Keep and create new!</button>
     <button type="button" onclick="capture();">Keep!</button>
-    <!-- <button type="button" onclick="generateChar(2)">Generate Dwarf!</button>
-    <button type="button" onclick="generateChar(3)">Generate Halfling!</button>
+    <!-- <button type="button" onclick="generateChar(2)">Generate Dwarf!</button> -->
+    <!-- <button type="button" onclick="generateChar(3)">Generate Halfling!</button> -->
     <button type="button" onclick="generateChar(4)">Generate Hight Elf!</button>
-    <button type="button" onclick="generateChar(5)">Generate Wood Elf!</button>
-    <button type="button" onclick="generateChar(6)">Generate Gnome!</button> -->
+    <!-- <button type="button" onclick="generateChar(5)">Generate Wood Elf!</button> -->
+    <!-- <button type="button" onclick="generateChar(6)">Generate Gnome!</button> -->
     <br>
     <table style="display: none">
         <tr>

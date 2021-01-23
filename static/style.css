@@ -1,0 +1,149 @@
+.list {
+    display: list-item;
+    margin-left: 1.3em;
+    list-style-type: square;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.wrapper-style {
+    /*max-width: 90vw;*/
+    font: 1.2em Helvetica, arial, sans-serif;
+}
+
+.wrapper-style>* {
+    border: 0.5px solid #f08c00;
+    /*background-color: #ffec99;*/
+    border-radius: 5px;
+    padding: 10px;
+}
+
+nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.content {
+    min-height: auto;
+}
+
+.wrapper {
+    margin: 0 auto;
+    height: 90vh;
+    /*display: grid;*/
+    /*grid-template-columns: repeat(12, [col-start] 1fr);*/
+    /*grid-template-rows: repeat(12, [row-start] 1fr);*/
+    /*grid-gap: 10px;*/
+}
+
+.wrapper>* {
+    grid-column: col-start / span 12;
+}
+
+.title {
+    /*margin: 10px;*/
+    text-align: center;
+}
+
+
+
+
+/*
+@media  and (min-device-width: 480px){
+
+}
+*/
+
+/*.hidden {
+  display: none;
+  visibility: hidden;
+} */
+
+@media (min-width: 900px) {
+
+
+    body,
+    html {
+        /*overflow: hidden;*/
+        margin: 0;
+        padding: 0;
+    }
+
+
+}
+
+.highlight {
+    /*background: red;*/
+    /*border: 3px red dotted;*/
+    background: AliceBlue;
+}
+
+.semi-highlight {
+    background: Azure;
+}
+
+
+body{
+    height: 100%
+}
+
+.grid-container {
+    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.1fr 1.4fr 1fr 1fr;
+  gap: 2px 2px;
+  grid-template-areas:
+    "name name name controls info"
+    "class career status controls info"
+    "personality quirks . controls info"
+    "notes notes talents talents info"
+    "stats stats stats stats info";
+}
+
+.class { grid-area: class; }
+
+.stats { grid-area: stats; }
+
+.talents { grid-area: talents; }
+
+.notes { grid-area: notes; }
+
+.career { grid-area: career; }
+
+.personality { grid-area: personality; }
+
+.quirks { grid-area: quirks; }
+
+.status { grid-area: status; }
+
+.name { grid-area: name; }
+
+.controls { grid-area: controls; }
+
+.info { grid-area: info; }
+
+input {
+  border: none;
+  display: inline;
+  font-family: inherit;
+  font-size: inherit;
+  padding: none;
+  width: auto;
+}
+
+
+.reroll-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.char-info-container{
+position: relative;
+  
+}

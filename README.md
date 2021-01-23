@@ -12,6 +12,9 @@ Hosted here, links below:
 - [4th Edition Random Books](/wfrp-4th-edition-random-books.html) 
 - [4th Edition Random Cat](/wfrp-4th-edition-random-cat.html) 
 - [4th Edition Random Character](/wfrp-4th-edition-random-character.html) 
+	- Now has a stronger focus on humans only
+	- Can save images of interesting chacters for later use
+	- Generates personalities and unique quirks for characters with mixed results
 - [4th Edition Random Cult](/wfrp-4th-edition-random-cult.html) 
 - [4th Edition Random Disease](/wfrp-4th-edition-random-disease.html) 
 - [4th Edition Random Dog](/wfrp-4th-edition-random-dog.html) 
@@ -20,3 +23,10 @@ Hosted here, links below:
 - [4th Edition Random Treasure](/wfrp-4th-edition-random-treasure.html) 
 - [4th Edition Random Treasureesp](/wfrp-4th-edition-random-treasureESP.html) 
 - [Random Inn](/wfrp-random-inn.html)
+
+All credit to fmunoz-geo, who created the original. OG blog link below
+https://pacomiscelaneousstuff.blogspot.com/2018/08/wfrp-4th-edition-random-character.html
+
+
+# Coming soon
+- Char history
