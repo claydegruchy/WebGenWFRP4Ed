@@ -27,6 +27,29 @@ Hosted here, links below:
 All credit to fmunoz-geo, who created the original. OG blog link below
 https://pacomiscelaneousstuff.blogspot.com/2018/08/wfrp-4th-edition-random-character.html
 
+# Example char:
+### Name
 
-# Coming soon
-- Char history
+Ian Reichardt
+
+#### Class
+
+Academics
+
+#### Career
+
+Priest
+
+#### Status
+
+Brass 5
+
+#### Personality
+
+Objective and considerate
+
+#### Quirks
+
+When stressed or lying, speaks from the corner of his or her mouth.
+
+#### Notes
