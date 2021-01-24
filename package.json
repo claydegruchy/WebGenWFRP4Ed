@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/claydegruchy/WebGenWFRP4Ed#readme",
   "dependencies": {
-    "faker": "^5.1.0"
+    "faker": "^5.1.0",
+    "marked": "^1.2.7",
+    "turndown": "^7.0.0"
   }
 }

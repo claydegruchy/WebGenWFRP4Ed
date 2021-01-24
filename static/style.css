@@ -59,10 +59,10 @@ nav {
 }
 */
 
-/*.hidden {
-  display: none;
-  visibility: hidden;
-} */
+.hidden {
+    display: none;
+    visibility: hidden;
+}
 
 @media (min-width: 900px) {
 
@@ -88,53 +88,79 @@ nav {
 }
 
 
-body{
+body {
     height: 100%
 }
 
 .grid-container {
     height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1.1fr 1.4fr 1fr 1fr;
-  gap: 2px 2px;
-  grid-template-areas:
-    "name name name controls info"
-    "class career status controls info"
-    "personality quirks . controls info"
-    "notes notes talents talents info"
-    "stats stats stats stats info";
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1.1fr 1.4fr 1fr 1fr;
+    gap: 2px 2px;
+    grid-template-areas:
+        "name name name controls info"
+        "class career status controls info"
+        "personality quirks . controls info"
+        "notes notes talents talents info"
+        "stats stats stats stats info";
 }
 
-.class { grid-area: class; }
+.class {
+    grid-area: class;
+}
 
-.stats { grid-area: stats; }
+.stats {
+    grid-area: stats;
+}
 
-.talents { grid-area: talents; }
+.talents {
+    grid-area: talents;
+}
 
-.notes { grid-area: notes; }
+.notes {
+    grid-area: notes;
+}
 
-.career { grid-area: career; }
+.career {
+    grid-area: career;
+}
 
-.personality { grid-area: personality; }
+.personality {
+    grid-area: personality;
+}
 
-.quirks { grid-area: quirks; }
+.quirks {
+    grid-area: quirks;
+}
 
-.status { grid-area: status; }
+.status {
+    grid-area: status;
+}
 
-.name { grid-area: name; }
+.name {
+    grid-area: name;
+}
 
-.controls { grid-area: controls; }
+.controls {
+    grid-area: controls;
+}
 
-.info { grid-area: info; }
+.info {
+    grid-area: info;
+}
 
-input {
-  border: none;
-  display: inline;
-  font-family: inherit;
-  font-size: inherit;
-  padding: none;
-  width: auto;
+input,
+textarea {
+    border: none;
+    display: inline;
+    font-family: inherit;
+    font-size: inherit;
+    padding: none;
+    width: auto;
+    font-size: calc(var(--variable-width) + 20px);
+    /*font-size: 3.5vw;*/
+
 }
 
 
@@ -143,7 +169,26 @@ input {
     top: 0px;
     right: 0px;
 }
-.char-info-container{
-position: relative;
-  
+
+.char-info-container {
+    position: relative;
+
+}
+
+
+
+
+.small {
+    /*white-space: pre-line*/
+    font-size: 5;
+    border: 1px solid;
+    /*width:500px;*/
+    /*height:200px;*/
+    overflow:auto;
+    /*outline:none;*/
+    /*resize:none;*/
+        /*overflow-x: auto;*/
+overflow-x: scroll 
+ padding-right: 100%.
+
 }

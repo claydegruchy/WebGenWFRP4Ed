@@ -1,16 +1,3004 @@
-var CareerAll = ["Apothecary","Engineer","Lawyer","Nun",
-"Physician","Priest","Scholar","Wizard",
-"Agitator","Artisan","Beggar","Investigator",
-"Merchant","Rat Catcher","Townsman","Watchman",
-"Advisor","Artist","Duellist","Envoy",
-"Noble","Servant","Spy","Warden",
-"Bailiff","Hedge Witch","Herbalist","Hunter",
-"Miner","Mystic","Scout","Villager",
-"Bounty Hunter","Coachman","Entertainer","Flagellant",
-"Messenger","Pedlar","Roadwarden","Witch Hunter",
-"Boatman","Huffer","Riverwoman","Riverwarden",
-"Seaman","Smuggler","Stevedore","Wrecker",
-"Bawd","Charlatan","Fence","Grave Robber",
-"Outlaw","Racketeer","Thief","Witch",
-"Cavalryman","Guard","Knight","Pit Fighter",
-"Protagonist","Soldier","Troll Slayer","Warrior Priest"];
+{
+  "races": {
+    "Human": {},
+    "Dwarf": {},
+    "Halfling": {},
+    "High Elf": {},
+    "Wood Elf": {},
+    "Gnome": {}
+  },
+  "personality": {
+    "quirks": [
+      "Talks about self in the third person",
+      "Can't stand the sight of blood",
+      "Names everything",
+      "Never leaves a man behind",
+      "Allergic to everything",
+      "Colour Blind",
+      "Albino",
+      "Always chews gum/toothpick",
+      "Dramatic/Interesting scar on (face/part of body)",
+      "Unusual mole or birth mark (shaped like....)",
+      "Missing a limb (and uses prosthetic)",
+      "Always wears lucky hat (or other article of clothing)",
+      "Doesn't bathe",
+      "Heavily tattooed",
+      "Excessively grooms self",
+      "Asthma",
+      "Gastroesophageal Reflux Disease AKA heartburn",
+      "flat-chested/poorly endowed/well-endowed",
+      "obese",
+      "acne problems",
+      "profusely hairy/astonishingly hairless",
+      "very short/very tall",
+      "Missing an eye",
+      "cleft palate",
+      "Missing one or more fingers",
+      "Heavy accent",
+      "Hoarse/gravelly voice from smoking, shouting, etc",
+      "Parasitic twin",
+      "Has parasites",
+      "Strokes beard/twirls moustache/plays with hair/chews on hair",
+      "Mouth breather",
+      "No fashion sense",
+      "Has one day left till retirement.",
+      "Saw a dead body once.",
+      "Carries a large coin which he or she is always rolling over his or her knuckles.",
+      "Is a habitual sniffler even when he or she is healthy.",
+      "Regularly looks up at the sky to check the position of the sun/moon and comments on it.",
+      "Always knows the direction he or she is traveling in.",
+      "Corrects people when they use colloquial speech.",
+      "Is never seen without a baseball cap or stocking cap (except, of course, in bed or the shower)",
+      "Whistles the Scarecrow/Tin Man/Cowardly Lion song at random time and refuses to stop.",
+      "Ends declarative sentences with in interrogative inflection?",
+      "Is a mush mouth.",
+      "Is an incessant fidgeter and is always touching his or her face or head.",
+      "Is unable to digest proteins correctly and gets very ill if too much protein rich food is consumed.",
+      "story before, not because they were involved with it.",
+      "Makes up random lies about unimportant things for no reason.",
+      "Has a weakness for rescuing stray animals.",
+      "Gets physically angry when people mispronounce a certain word.",
+      "Regularly mispronounces a certain word or uses redundant terms.",
+      "When stressed or lying, speaks from the corner of his or her mouth.",
+      "Profusely sweats even when at rest.",
+      "Is unable to take advice from anyone because he or she thinks that they know it all.",
+      "Uses mundane items as toys (e.g. bottle caps, straws, chopsticks).",
+      "Cannot drink anything with ice in it.",
+      "Is strongly susceptible to brain freeze.",
+      "Doesn’t wash his or her hands after using the bathroom.",
+      "When dining out, always tidies up the table and resets the condiments.",
+      "Walks in the middle of any aisle, sidewalk, or other shared walkway causing people to have to move around him or her.",
+      "Drags his or her feet.",
+      "Cannot stand the feel of glass in his or her hand.",
+      "Draws random doodles on any piece of paper in front of him or her and always carries a pen or pencil to facilitate this habit.",
+      "Wears only new socks.",
+      "Has several hidden body piercings or tattoos that regular clothing conceal.",
+      "Always stands with his or her hands behind their back, sometimes in an at ease position, though he or she was never in the military.",
+      "Excessively uses initials or acronyms for common AND uncommon phrases and doesn’t bother to explain them.",
+      "Doesn’t eat green things.",
+      "Strongly dislikes the sound of chewing and hums a quiet song while eating.",
+      "Has the ability to speak in a cartoon-like voice which sounds little or nothing like his or her real voice.",
+      "Is thrifty nearly to the point of obsessive or compulsive nature.",
+      "Is always at least ten minutes early to everything.",
+      "Can calculate the total of any items but is always just off.",
+      "Generally submits to the ideas and suggestions of others without thinking of his or her own needs.",
+      "Readily puts him or her self in the way of danger without careful consideration.",
+      "Always has change in his or her pocket to give to beggars or homeless.",
+      "Is always trying to recruit people to his or her religious/philosophical beliefs.",
+      "Constantly quotes favorite movies and can usually identify the movie that a quote may come from.",
+      "Overly honest person, always telling the truth even to his or her own detriment.",
+      "Takes stupid bets/dares for small amounts of money.",
+      "Has several parts of his or her body that are double jointed and bend or flex in an unnatural or uncanny manner.",
+      "Writes with left hand, but does everything else right-handed.",
+      "Can only see out of one eye or hear out of one ear.",
+      "Is susceptible to malapropisms or spoonerisms.",
+      "Often stares off into nothing",
+      "Unique eye or hair color",
+      "Some discerning physical mark — birthmark, freckles, mole, or scar",
+      "Wears unusual glasses",
+      "Has braces and headgear",
+      "Large feet — may mean they’re clumsy",
+      "Bites their nails/lips or chews on their hair",
+      "Constantly fidgeting and can’t sit still",
+      "Acne, eczema, or other skin problems",
+      "Many tattoos or piercings",
+      "Often sick or has allergies (constantly sniffling/blowing their nose)",
+      "Talks very loudly or quietly",
+      "Says everything like it’s a question",
+      "Terrible breath — may be a coffee drinker",
+      "Gets sweaty easily (especially when nervous)",
+      "Unusually hairy arms or legs",
+      "Very long painted nails",
+      "Always wears a faceful of makeup",
+      "Has a stutter or other speech impediment",
+      "Often tucks their hair behind their ears",
+      "Constantly chews gum",
+      "Always picking their teeth",
+      "Smokes and has a raspy voice",
+      "Breathes heavily or snores",
+      "Is extremely muscular",
+      "Walks very slowly or quickly",
+      "Left-handed or ambidextrous",
+      "Constantly scratching themselves",
+      "Has some noticeable physical tic, like a twitch",
+      "Always wears a distinct item of clothing or accessory",
+      "Very introverted, quiet and reserved, keeps to themselves",
+      "Highly extroverted, loves socializing and meeting new people",
+      "Mega control freak who has to have everything their way",
+      "Neat freak (often coincides with control freak)",
+      "Total slob who never knows where anything is",
+      "Super stubborn and will never admit when they’re wrong",
+      "Brutally honest and can’t lie to save their life",
+      "Extremely judgmental of other people",
+      "Short-tempered, especially when irritated",
+      "Always patient, even when frustrated",
+      "Hilarious or odd sense of humor",
+      "Very hard to make them laugh",
+      "Loves to eat and is obsessed with food",
+      "Loves to drink and is constantly partying",
+      "Constantly complains about everything",
+      "Extremely loyal and will do anything for their friends/family",
+      "Adventurous and willing to try anything",
+      "Cautious and careful no matter what",
+      "Energetic, hardly ever needs to rest",
+      "Sleeps all the time and still gets tired during the day",
+      "Horrible sense of direction and constantly gets lost",
+      "Overachiever who loves school/structure",
+      "Really modest and won’t ever brag about themselves",
+      "Extremely emotional and will cry at the drop of a hat",
+      "Stoic and detached, rarely shows emotion",
+      "Wildcard whose behavior is unpredictable, even to their friends",
+      "Notoriously two-faced and will betray anyone",
+      "Charismatic and can convince anyone to do their bidding",
+      "Very proper and always polite to others",
+      "Dates tons of people and has a new boyfriend or girlfriend every week",
+      "Obsessive personality",
+      "Fantastic cook or baker",
+      "Skilled musician (piano, guitar, violin, etc.)",
+      "Artistic talent (drawing, painting, sculpting, etc.)",
+      "Model athlete (football, hockey, swimming, etc.)",
+      "Great at voices/ventriloquy",
+      "Can do sleight-of-hand — may be a pickpocket",
+      "Speaks multiple languages, even obscure ones",
+      "Knows everything about history",
+      "Mathematical or scientific genius",
+      "Brilliant coder and can hack into any database",
+      "Skilled mechanical inventor",
+      "Can build or put together anything",
+      "Super-quick logical reasoning",
+      "Exceptional memory/genius IQ (several of the above might fall under this one)",
+      "Special connection with animals",
+      "Super empathetic and understanding of other people",
+      "Extremely fast runner",
+      "Contortionist (can twist their body into any shape)",
+      "Psychic talent (can predict the future)",
+      "Super strength, flying, invisibility or other superpowers",
+      "Unusually high tolerance for pain",
+      "Survival skills like hunting and fishing",
+      "Quick reflexes, acts fast in a crisis",
+      "Brave and fearless, not scared of anything",
+      "Able to talk their way out of any trouble/invent stories on the fly",
+      "Awful rider",
+      "Always running late",
+      "Illegible handwriting",
+      "Terrible at public speaking",
+      "Socially awkward — hard for them to make friends",
+      "Self-destructive and always wants what’s worst for them",
+      "Gets blackout drunk every time they go out",
+      "Extremely conceited or arrogant",
+      "Compulsive liar",
+      "Manipulative of friends",
+      "Gets jealous over nothing",
+      "Often mean for no reason",
+      "Unbelievably self-centered",
+      "Extremely passive-aggressive",
+      "Dresses all in one color",
+      "Always dresses too nicely for the occasion",
+      "Walks around barefoot, even in stores and other public places",
+      "Hates being inside, sleeps and goes to the bathroom outdoors",
+      "Can’t help but look in every mirror/lake reflection they pass",
+      "Preps their meals three weeks in advance",
+      "Makes their own (terrible) abstract art and hangs it on their walls",
+      "Gets super excited about Christmas and then really depressed in January",
+      "Refuses to wear glasses even though they need them",
+      "Carries around a secret teddy bear",
+      "Has been wearing the same friendship bracelet for three years",
+      "Keeps clothing very neat",
+      "Will a shop or restaurant if someone walks in with a baby",
+      "Extremely superstitious (knocks on wood, avoids the number 13, etc.)",
+      "Drops everything other people ask them to hold",
+      "Likes to go out dancing by themselves",
+      "Prefers to have the lights off or dimmed at all times",
+      "Always wears multiple sweaters on top of each other",
+      "Won’t eat anything that doesn’t have bread (at least on the side)",
+      "Thinks they’re a time-traveler from the medieval era",
+      "Gives friends and family excellent homemade presents",
+      "Has an imaginary friend they still talk to, even in adulthood",
+      "Owns a lizard that they try and use as a guard dog",
+      "Leaves little hidden notes",
+      "Uses tissues to interact with public items",
+      "Wears their hair in Princess Leia buns",
+      "Never goes a day without talking to their mom",
+      "Hums “In the Hall of the Mountain King” when they get stressed",
+      "Clucks their tongue while walking, so they sound like a horse",
+      "Loves hanging out in completely empty places",
+      "Convinced they’re going to die in a freak accident",
+      "Grows all their own food in their vegetable garden",
+      "Eats vegetarian, but only out of guilt",
+      "Loves the beach but hates swimming",
+      "Flicks people in the forehead when they get annoyed",
+      "Laughs at everything, even bad jokes"
+    ],
+    "traits": [
+      "able",
+      "accountable",
+      "active",
+      "adaptable",
+      "adventurous",
+      "affable",
+      "affected",
+      "affectionate",
+      "afraid",
+      "aggressive",
+      "altruistic",
+      "ambitious",
+      "amiable",
+      "angry",
+      "animated",
+      "annoyed",
+      "anxious",
+      "appreciative",
+      "argumentative",
+      "arrogant",
+      "artificial",
+      "astonished",
+      "attentive",
+      "available",
+      "awkward",
+      "babyish",
+      "bashful",
+      "bewildered",
+      "blasé",
+      "bold",
+      "boorish",
+      "bored",
+      "bossy",
+      "brave",
+      "bright",
+      "brilliant",
+      "busy",
+      "calm",
+      "candid",
+      "capable",
+      "carefree",
+      "careful",
+      "caring",
+      "caustic",
+      "cautious",
+      "challenge-loving",
+      "charismatic",
+      "charming",
+      "cheerful",
+      "childish",
+      "clever",
+      "clumsy",
+      "coarse",
+      "cold-hearted",
+      "committed",
+      "communicative",
+      "compassionate",
+      "complacent",
+      "conceited",
+      "concerned",
+      "confident",
+      "confused",
+      "conscientious",
+      "considerate",
+      "consistent",
+      "content",
+      "cooperative",
+      "courageous",
+      "coward",
+      "crafty",
+      "creative",
+      "critical",
+      "cross",
+      "crude",
+      "cruel",
+      "cultured",
+      "curious",
+      "dainty",
+      "dangerous",
+      "daring",
+      "dark",
+      "dauntless",
+      "decisive",
+      "dedicated",
+      "deference",
+      "demanding",
+      "dependable",
+      "depressed",
+      "despondent",
+      "determined",
+      "devoted",
+      "dignified",
+      "diligent",
+      "disaffected",
+      "disagreeable",
+      "discerning",
+      "discouraged",
+      "discreet",
+      "discrete",
+      "dishonest",
+      "disillusioned",
+      "dismayed",
+      "disorganized",
+      "disparaging",
+      "disrespectful",
+      "dissatisfied",
+      "distressed",
+      "domineering",
+      "doubtful",
+      "dreamer",
+      "dutiful",
+      "eager",
+      "easygoing",
+      "effervescent",
+      "efficient",
+      "eloquent",
+      "embarrassed",
+      "encouraging",
+      "energetic",
+      "engaged",
+      "enthusiastic",
+      "equitable",
+      "exacting",
+      "exaggerated",
+      "excitable",
+      "excited",
+      "expert",
+      "exuberant",
+      "facetious",
+      "fair",
+      "faithful",
+      "fanciful",
+      "fancy",
+      "fearless",
+      "fidgety",
+      "fierce",
+      "fighter",
+      "finicky",
+      "flexible",
+      "focused",
+      "foolish",
+      "forgiving",
+      "formal",
+      "fortunate",
+      "frank",
+      "friendly",
+      "frightened",
+      "frugal",
+      "frustrated",
+      "fun-loving",
+      "funny",
+      "furious",
+      "garrulous",
+      "generous",
+      "gentle",
+      "giddy",
+      "giving",
+      "glamorous",
+      "gloomy",
+      "glum",
+      "good citizen",
+      "grateful",
+      "greedy",
+      "gregarious",
+      "grouchy",
+      "grumpy",
+      "gullible",
+      "handsome",
+      "happy",
+      "hard-working",
+      "hardy",
+      "harried",
+      "harsh",
+      "hateful",
+      "haughty",
+      "helpful",
+      "hesitant",
+      "honest",
+      "hopeful",
+      "hopeless",
+      "hospitable",
+      "humble",
+      "humorous",
+      "ignorant",
+      "ill-bred",
+      "imaginative",
+      "immaculate",
+      "immature",
+      "impartial",
+      "impatient",
+      "impolite",
+      "impudent",
+      "impulsive",
+      "inactive",
+      "independent",
+      "industrious",
+      "innocent",
+      "innovative",
+      "inquisitive",
+      "insipid",
+      "insistent",
+      "insolent",
+      "intelligent",
+      "intrepid",
+      "inventive",
+      "jealous",
+      "jovial",
+      "joyful",
+      "keen",
+      "kind",
+      "lackadaisical",
+      "languid",
+      "lazy",
+      "leader",
+      "light",
+      "light-hearted",
+      "lively",
+      "logical",
+      "lonely",
+      "loquacious",
+      "lovable",
+      "loving",
+      "loyal",
+      "malicious",
+      "mannerly",
+      "mature",
+      "mean",
+      "meek",
+      "merciful",
+      "messy",
+      "meticulous",
+      "mischievous",
+      "moody",
+      "mysterious",
+      "naive",
+      "neat",
+      "negligent",
+      "nervous",
+      "noisy",
+      "obedient",
+      "obliging",
+      "obnoxious",
+      "obsequious",
+      "observant",
+      "obstinate",
+      "open",
+      "open-minded",
+      "opinionated",
+      "optimistic",
+      "organized",
+      "pandemonious",
+      "patient",
+      "patriotic",
+      "peaceful",
+      "pensive",
+      "persevering",
+      "persistent",
+      "persuasive",
+      "pessimistic",
+      "petulant",
+      "picky",
+      "pitiful",
+      "plain",
+      "pleasant",
+      "pleasing",
+      "polite",
+      "pompous",
+      "poor",
+      "popular",
+      "positive",
+      "precise",
+      "pretentious",
+      "pretty",
+      "prim",
+      "prompt",
+      "proper",
+      "proud",
+      "provident",
+      "prudence",
+      "prudent",
+      "punctilious",
+      "punctual",
+      "purpose",
+      "puzzled",
+      "quarrelsome",
+      "quick",
+      "quiet",
+      "quixotic",
+      "rambunctious",
+      "rash",
+      "rational",
+      "refined",
+      "reliable",
+      "relieved",
+      "religious",
+      "reserved",
+      "resourceful",
+      "respectful",
+      "responsible",
+      "responsive",
+      "restless",
+      "restrained",
+      "retiring",
+      "rich",
+      "risk-taking",
+      "rowdy",
+      "rude",
+      "sad",
+      "safe",
+      "sarcastic",
+      "satisfied",
+      "saucy",
+      "saving",
+      "scared",
+      "scheming",
+      "scornful",
+      "secretive",
+      "secure",
+      "sedate",
+      "self-centered",
+      "self-confident",
+      "self-controlled",
+      "self-disciplined",
+      "selfish",
+      "self-reliant",
+      "sense of humour",
+      "sensitive",
+      "serious",
+      "short",
+      "shrewd",
+      "shy",
+      "silly",
+      "simple",
+      "simple-minded",
+      "sincere",
+      "skilful",
+      "slovenly",
+      "sly",
+      "smart",
+      "sneaky",
+      "snobbish",
+      "sober",
+      "sociable",
+      "sparing",
+      "steady",
+      "stingy",
+      "stolid",
+      "strange",
+      "strict",
+      "strong",
+      "stubborn",
+      "studious",
+      "stupid",
+      "suave",
+      "submissive",
+      "successful",
+      "sullen",
+      "supercilious",
+      "superstitious",
+      "supportive",
+      "surly",
+      "suspicious",
+      "sweet",
+      "taciturn",
+      "tactful",
+      "talented",
+      "talkative",
+      "tasteful",
+      "team player",
+      "tenacious",
+      "tense",
+      "terrified",
+      "thankful",
+      "thorough",
+      "thoughtful",
+      "thrifty",
+      "thrilling",
+      "timid",
+      "tireless",
+      "tolerant",
+      "touchy",
+      "trusting",
+      "trustworthy",
+      "truthful",
+      "ugly",
+      "uncontrolled",
+      "uncouth",
+      "unfriendly",
+      "ungraceful",
+      "unnatural",
+      "unrefined",
+      "unruly",
+      "unscrupulous",
+      "unselfish",
+      "upright",
+      "upset",
+      "useful",
+      "valiant",
+      "versatile",
+      "virtue",
+      "visionary",
+      "vivacious",
+      "vulgar",
+      "warm",
+      "warm-hearted",
+      "weak",
+      "whimsical",
+      "wild",
+      "wise",
+      "witty",
+      "worried",
+      "adventurous",
+      "conventional",
+      "substance-free",
+      "substance-abuse (alcoholdrug)",
+      "alert",
+      "dull",
+      "aware of opportunities",
+      "ignorant of opportunities",
+      "calm",
+      "excitable",
+      "nervous",
+      "clean [ep to 9 levels]",
+      "dirty",
+      "unkempt",
+      "clear goals",
+      "lack of",
+      "jumbled goals; directionless",
+      "clear thoughts",
+      "muddled thoughts",
+      "confused",
+      "completes",
+      "leaves hanging",
+      "doesn't complete",
+      "comprehends",
+      "doesn't comprehend",
+      "conscious",
+      "unconscious",
+      "conscious of one's weaknesses",
+      "unconscious of one's strengths",
+      "constructive",
+      "destructive",
+      "complaining",
+      "content-oriented",
+      "outer",
+      "surface",
+      "form-oriented",
+      "creative",
+      "uncreative",
+      "delegates",
+      "tries to do everything",
+      "deliberative",
+      "reckless",
+      "detail-oriented",
+      "scrimps on details",
+      "develops mental capabilities",
+      "directed",
+      "has direction",
+      "directionless",
+      "unfocused",
+      "disciplined",
+      "dissipating",
+      "dynamic",
+      "passive",
+      "educated",
+      "flexible",
+      "inflexible",
+      "rigid",
+      "unbending",
+      "stubborn",
+      "forgiving",
+      "unforgiving",
+      "resentful",
+      "spiteful",
+      "focused",
+      "unfocused",
+      "scattered",
+      "freedom given to others",
+      "authoritarian",
+      "controlling",
+      "friendly",
+      "unfriendly",
+      "distant",
+      "aloof",
+      "hostile",
+      "frugal",
+      "thrifty",
+      "wasteful",
+      "spendthrift",
+      "generous",
+      "stingy",
+      "miserly",
+      "selfish",
+      "goodwill",
+      "ill-will",
+      "malice",
+      "hatred",
+      "grateful",
+      "ungrateful",
+      "unappreciative",
+      "hard-working",
+      "lazy",
+      "honest",
+      "dishonest",
+      "deceiving",
+      "lying",
+      "humble",
+      "arrogant",
+      "conceited",
+      "ego-centric",
+      "interested",
+      "indifferent",
+      "uncaring",
+      "involved",
+      "complacent",
+      "indifferent",
+      "jealous",
+      "not",
+      "jealous",
+      "envious",
+      "covetous",
+      "kind",
+      "unkind",
+      "uncaring",
+      "cruel",
+      "mean",
+      "mature",
+      "immature",
+      "modest",
+      "vain",
+      "open-minded",
+      "tolerant",
+      "narrow",
+      "close",
+      "small-minded",
+      "intolerant",
+      "optimistic",
+      "pessimistic",
+      "perfects ",
+      "allows imperfection",
+      "persistent",
+      "sustaining",
+      "flagging",
+      "fleeting",
+      "unsustaining",
+      "positive",
+      "negative",
+      "practical",
+      "impractical",
+      "not viable",
+      "punctual",
+      "late",
+      "not on time",
+      "realistic",
+      "unrealist",
+      "impractical",
+      "reliable",
+      "unreliable",
+      "undependable",
+      "respectful",
+      "disrespectful",
+      "rude",
+      "impolite",
+      "responsibility; takes-",
+      "blames others",
+      "responsible [ep to 9 levels]",
+      "unreliable",
+      "undependable",
+      "responsive",
+      "unresponsive",
+      "unreceptive",
+      "self-confident",
+      "lack of self confidence",
+      "insecure",
+      "self-directed",
+      "directed by externals ",
+      "self-disciplined",
+      "undisciplined",
+      "unrestrained",
+      "indulgent",
+      "self-esteem",
+      "high",
+      "self-esteem",
+      "confidence - low",
+      "self-giving",
+      "self-centered",
+      "self-reliant",
+      "dependent",
+      "selfless",
+      "selfish",
+      "sensitive",
+      "Insensitive",
+      "indifferent",
+      "serious",
+      "frivolous",
+      "silly",
+      "trivial",
+      "sincere",
+      "insincere",
+      "dishonest",
+      "social independence",
+      "social approval required",
+      "sympathetic",
+      "unsympathetic",
+      "unfeeling",
+      "systematic",
+      "unsystematic",
+      "disorganized",
+      "disorderly",
+      "random",
+      "takes others point of view",
+      "insists on own view",
+      "thoughtful towards others",
+      "thoughtless",
+      "inconsiderate",
+      "callous",
+      "trusting",
+      "suspicious",
+      "mistrusting",
+      "unpretentious",
+      "pretentious",
+      "affected",
+      "ostentatious",
+      "unselfish",
+      "selfish",
+      "willing does",
+      "willingness ",
+      "unwilling",
+      "reluctant",
+      "recalcitrant",
+      "work-oriented",
+      "convenience first",
+      "Show-off",
+      "Prankster/Practical Joker",
+      "Superstitious",
+      "Over-confidant",
+      "Passive-aggressive",
+      "Bad with names; gets names mixed up",
+      "No short term memory",
+      "Never gets seasick",
+      "Always keeps their cool",
+      "Mooch",
+      "Anal Retentive",
+      "Narcissistic/Self-absorbed/shallow",
+      "Pompous",
+      "Promiscuous",
+      "Alcoholic",
+      "Depressed",
+      "Masochist",
+      "Will do anything for attention",
+      "Obsesses",
+      "Adaptability",
+      "Aggressiveness",
+      "Agreeableness",
+      "Altruism",
+      "Androgyny",
+      "Assertiveness",
+      "Authoritarianism",
+      "Conformity",
+      "Conscientiousness",
+      "Conservatism",
+      "Courage",
+      "Creativity",
+      "Cruelty",
+      "Curiosity",
+      "Cynicism",
+      "Defensiveness",
+      "Dependency",
+      "Dishonesty",
+      "Dogmatism",
+      "Egalitarianism",
+      "Egotism",
+      "Emotional immaturity",
+      "Emotional inferiority",
+      "Emotional instability",
+      "Emotional maturity",
+      "Emotional stability",
+      "Emotional superiority",
+      "Emotionality",
+      "Empathy",
+      "Extraversion",
+      "Femininity",
+      "Gregariousness",
+      "Hardiness",
+      "Honesty",
+      "Humility",
+      "Hypnotic susceptibility",
+      "Impulsivity",
+      "Independence",
+      "Initiative",
+      "Integrity",
+      "Introversion",
+      "Irritability",
+      "Liberalism",
+      "Likability",
+      "Loyalty",
+      "Machiavelianism",
+      "Masculinity",
+      "Misanthropy",
+      "Moodiness",
+      "Narcissism",
+      "Need for approval",
+      "Need for cognition",
+      "Negativism",
+      "Nervousness",
+      "Neuroticism",
+      "Nonconformity",
+      "Nurturance",
+      "Obedience",
+      "Objectivity",
+      "Omnipotence",
+      "Openmindedness",
+      "Openess to experience",
+      "Optimism",
+      "Paranoia",
+      "Passiveness",
+      "Perseptiveness",
+      "Perfectionism",
+      "Persistance",
+      "Pessimism",
+      "Positivism",
+      "Psychoticism",
+      "Rebelliousness",
+      "Resilience",
+      "Rigidity",
+      "Risk taking",
+      "Self control",
+      "Selfishness",
+      "Sensation seeking",
+      "Sensitivity",
+      "Seriousness",
+      "Sincerity",
+      "Sociability",
+      "Subjectivity",
+      "Suggestibility",
+      "Timidity",
+      "Tolerance",
+      "Charisma",
+      "Codependency",
+      "Cognitive style",
+      "Coronary prone behavior",
+      "Egocentrism",
+      "Emotional security",
+      "Five Factor Model",
+      "Instrumentality",
+      "Internal external locus of control",
+      "Leadership qualities",
+      "Sexuality",
+      "Repression sensitization",
+      "Accountable",
+      "Active",
+      "Adaptable",
+      "Adventurous",
+      "Affable",
+      "Affectionate",
+      "Agreeable ",
+      "Alert",
+      "Altruistic",
+      "Analytical",
+      "Appropriate",
+      "Articulate",
+      "Artistic ",
+      "Assertive",
+      "Astute",
+      "Athletic",
+      "Attentive ",
+      "Attractive",
+      "Aware",
+      "Balanced",
+      "Brave",
+      "Brilliant",
+      "Calm",
+      "Candid",
+      "Captivating",
+      "Careful",
+      "Caring",
+      "Charming",
+      "Cheerful",
+      "Circumspect",
+      "Clean",
+      "Clearheaded",
+      "Clever",
+      "Collaborative",
+      "Comfortable",
+      "Commanding",
+      "Committed",
+      "Compassionate",
+      "Competitive",
+      "Concise",
+      "Confident",
+      "Conscious",
+      "Considerate",
+      "Constructive",
+      "Content",
+      "Cooperative",
+      "Coordinated",
+      "Courageous",
+      "Courteous",
+      "Creative",
+      "Curious",
+      "Decisive",
+      "Dedicated",
+      "Dependable",
+      "Determined",
+      "Devoted",
+      "Direct",
+      "Disarming",
+      "Disciplined",
+      "Driven",
+      "Dynamic",
+      "Eager",
+      "Educated",
+      "Efficient",
+      "Egalitarian",
+      "Elegant",
+      "Eloquent",
+      "Empathetic",
+      "Encouraging",
+      "Energetic",
+      "Engaged",
+      "Enterprising",
+      "Enthusiastic",
+      "Entrepreneurial",
+      "Erudite",
+      "Evenhanded",
+      "Expressive",
+      "Fair",
+      "Faithful",
+      "Flexible",
+      "Fluent",
+      "Focused",
+      "Forgiving",
+      "Friendly",
+      "Fun ",
+      "Funny",
+      "Generous",
+      "Genius",
+      "Gentle",
+      "Giving",
+      "Good",
+      "Graceful",
+      "Grateful",
+      "Gregarious",
+      "Hard-working",
+      "Hardy",
+      "Healthy",
+      "Helpful",
+      "Honest",
+      "Humble",
+      "Imaginative",
+      "Independent",
+      "Industrious",
+      "Influential",
+      "Informed",
+      "Innovative",
+      "Insightful",
+      "Inspired",
+      "Inspiring",
+      "Intelligent",
+      "Intelligent",
+      "Interested",
+      "Intuitive",
+      "Involved",
+      "Joyful",
+      "Just",
+      "Kind",
+      "Leader",
+      "Likable",
+      "Logical",
+      "Loving",
+      "Loyal",
+      "Mannered",
+      "Masculine",
+      "Mature",
+      "Methodical",
+      "Moderate",
+      "Modest",
+      "Motivated",
+      "Motivating",
+      "Neat",
+      "Noble",
+      "Nuanced",
+      "Nurturance",
+      "Nurturing",
+      "Obedient",
+      "Objective",
+      "Observant",
+      "Open",
+      "Open-minded",
+      "Optimistic",
+      "Orderly",
+      "Organized",
+      "Original",
+      "Passionate",
+      "Patient",
+      "Perceptive",
+      "Personable",
+      "Poised",
+      "Polite",
+      "Positive",
+      "Practical",
+      "Precise ",
+      "Productive",
+      "Professional",
+      "Punctual",
+      "Quick",
+      "Realistic",
+      "Receptive",
+      "Relaxed",
+      "Reliable",
+      "Resourceful",
+      "Respectful",
+      "Responsible",
+      "Responsive",
+      "Result-oriented",
+      "Secure",
+      "Self-aware",
+      "Self-controlled",
+      "Self-directed",
+      "Self-disciplined",
+      "Selfish",
+      "Selfless",
+      "Self-reliant",
+      "Self-starter",
+      "Sensitive",
+      "Sensual",
+      "Serious",
+      "Shrewd",
+      "Simple",
+      "Sincere",
+      "Skilled",
+      "Sober",
+      "Sociable",
+      "Social independence",
+      "Socially conscious",
+      "Spiritual",
+      "Steady",
+      "Stoic",
+      "Striving",
+      "Strong",
+      "Subtle",
+      "Surprising",
+      "Sweet",
+      "Sympathetic",
+      "Systematic",
+      "Talented",
+      "Tenacious",
+      "Thorough",
+      "Tolerant",
+      "Trusting",
+      "Trustworthy",
+      "Unflappable",
+      "Un-intimidated",
+      "Unpretentious",
+      "Unselfish",
+      "Upstanding",
+      "Versatile",
+      "Visionary",
+      "Willing"
+    ]
+  },
+  "classes": {
+    "Academics": {
+      "Apothecary": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Engineer": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 4",
+          "Brass 5",
+          "Silver 1",
+          "Silver 2"
+        ]
+      },
+      "Lawyer": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 4
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 4",
+          "Brass 5",
+          "Silver 1",
+          "Silver 2"
+        ]
+      },
+      "Nun": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Physician": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 4",
+          "Brass 5",
+          "Silver 1",
+          "Silver 2"
+        ]
+      },
+      "Priest": {
+        "races": {
+          "Human": {
+            "chances": 5
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Scholar": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 4
+          },
+          "Wood Elf": {
+            "chances": 2
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Wizard": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 4
+          },
+          "Wood Elf": {
+            "chances": 4
+          },
+          "Gnome": {
+            "chances": 7
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      }
+    },
+    "Burghers": {
+      "Agitator": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Artisan": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 6
+          },
+          "Halfling": {
+            "chances": 5
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 5
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Beggar": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 4
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 0",
+          "Brass 1",
+          "Brass 2",
+          "Brass 3"
+        ]
+      },
+      "Investigator": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Merchant": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 5
+          },
+          "Halfling": {
+            "chances": 4
+          },
+          "High Elf": {
+            "chances": 5
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Silver 2",
+          "Silver 3",
+          "Silver 4",
+          "Silver 5"
+        ]
+      },
+      "Rat Catcher": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 3
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Townsman": {
+        "races": {
+          "Human": {
+            "chances": 3
+          },
+          "Dwarf": {
+            "chances": 6
+          },
+          "Halfling": {
+            "chances": 3
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 6
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Watchman": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      }
+    },
+    "Courtiers": {
+      "Advisor": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 4
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 2",
+          "Silver 3",
+          "Silver 4",
+          "Silver 5"
+        ]
+      },
+      "Artist": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 4
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Duellist": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 3",
+          "Silver 4",
+          "Silver 5",
+          "Gold 1"
+        ]
+      },
+      "Envoy": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 7
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 2",
+          "Silver 3",
+          "Silver 4",
+          "Silver 5"
+        ]
+      },
+      "Noble": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 6
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Gold 1",
+          "Gold 2",
+          "Gold 3",
+          "Gold 4"
+        ]
+      },
+      "Servant": {
+        "races": {
+          "Human": {
+            "chances": 3
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 6
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Spy": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 4
+          },
+          "Gnome": {
+            "chances": 5
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Warden": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      }
+    },
+    "Peasants": {
+      "Bailiff": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Hedge Witch": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Herbalist": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 3
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 7
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Hunter": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 11
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Miner": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 5
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 8
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Mystic": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 4
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Scout": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 6
+          },
+          "Wood Elf": {
+            "chances": 11
+          },
+          "Gnome": {
+            "chances": 4
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Villager": {
+        "races": {
+          "Human": {
+            "chances": 5
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 3
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 4
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      }
+    },
+    "Rangers": {
+      "Bounty Hunter": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 4
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 2
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Coachman": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Entertainer": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 3
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 8
+          },
+          "Gnome": {
+            "chances": 5
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Flagellant": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 0",
+          "Brass 1",
+          "Brass 2",
+          "Brass 3"
+        ]
+      },
+      "Messenger": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Pedlar": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 6
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Roadwarden": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 5",
+          "Silver 1",
+          "Silver 2",
+          "Silver 3"
+        ]
+      },
+      "Witch Hunter": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      }
+    },
+    "Riverfolk": {
+      "Boatman": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Huffer": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 4",
+          "Brass 5",
+          "Silver 1",
+          "Silver 2"
+        ]
+      },
+      "Riverwoman": {
+        "races": {
+          "Human": {
+            "chances": 3
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 3
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 4
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Riverwarden": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Seaman": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 15
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Smuggler": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 4
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 3
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Stevedore": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 2
+          },
+          "Halfling": {
+            "chances": 5
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Wrecker": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 1
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      }
+    },
+    "Rogues": {
+      "Bawd": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Charlatan": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 5
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Fence": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Grave Robber": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Outlaw": {
+        "races": {
+          "Human": {
+            "chances": 4
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 3
+          },
+          "Wood Elf": {
+            "chances": 6
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Racketeer": {
+        "races": {
+          "Human": {
+            "chances": 3
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 4
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 2
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      },
+      "Thief": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 1
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 4
+          }
+        },
+        "status": [
+          "Brass 3",
+          "Brass 4",
+          "Brass 5",
+          "Silver 1"
+        ]
+      },
+      "Witch": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 1",
+          "Brass 2",
+          "Brass 3",
+          "Brass 4"
+        ]
+      }
+    },
+    "Warriors": {
+      "Cavalryman": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 4
+          },
+          "Wood Elf": {
+            "chances": 5
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 2",
+          "Silver 3",
+          "Silver 4",
+          "Silver 5"
+        ]
+      },
+      "Guard": {
+        "races": {
+          "Human": {
+            "chances": 2
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 2
+          },
+          "Gnome": {
+            "chances": 1
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Knight": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 2
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 3",
+          "Silver 4",
+          "Silver 5",
+          "Gold 1"
+        ]
+      },
+      "Pit Fighter": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 1
+          },
+          "High Elf": {
+            "chances": 2
+          },
+          "Wood Elf": {
+            "chances": 2
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 4",
+          "Brass 5",
+          "Silver 1",
+          "Silver 2"
+        ]
+      },
+      "Protagonist": {
+        "races": {
+          "Human": {
+            "chances": 1
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Soldier": {
+        "races": {
+          "Human": {
+            "chances": 4
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 2
+          },
+          "High Elf": {
+            "chances": 1
+          },
+          "Wood Elf": {
+            "chances": 3
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      },
+      "Troll Slayer": {
+        "races": {
+          "Human": {
+            "chances": 0
+          },
+          "Dwarf": {
+            "chances": 3
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Silver 1",
+          "Silver 2",
+          "Silver 3",
+          "Silver 4"
+        ]
+      },
+      "Warrior Priest": {
+        "races": {
+          "Human": {
+            "chances": 0
+          },
+          "Dwarf": {
+            "chances": 0
+          },
+          "Halfling": {
+            "chances": 0
+          },
+          "High Elf": {
+            "chances": 0
+          },
+          "Wood Elf": {
+            "chances": 0
+          },
+          "Gnome": {
+            "chances": 0
+          }
+        },
+        "status": [
+          "Brass 2",
+          "Brass 3",
+          "Brass 4",
+          "Brass 5"
+        ]
+      }
+    }
+  }
+}

@@ -1,248 +1,327 @@
-    var faker = require('faker');
-    faker.locale = "de";
+var faker = require('faker');
+const marked = require('marked');
+var TurndownService = require('turndown')
+
+var turndownService = new TurndownService()
 
 
-    document.__proto__.customCreateElement = (tag = 'div', attributes = {}, parent) => {
-        // // console.log("customCreateElement", tag, attributes)
-        var myNewElement = document.createElement(tag);
-        for (var a in attributes) {
-            if (myNewElement[a] == '' || typeof attributes[a] == 'function') {
-                myNewElement[a] = attributes[a]
-            } else {
-                myNewElement.setAttribute(a, attributes[a]);
+faker.locale = "de";
 
-            }
+
+const toMd = html => turndownService.turndown(html)
+const toHtml = md => marked(md)
+
+document.__proto__.customCreateElement = (tag = 'div', attributes = {}, parent) => {
+    // // console.log("customCreateElement", tag, attributes)
+    var myNewElement = document.createElement(tag);
+    for (var a in attributes) {
+        if (myNewElement[a] == '' || typeof attributes[a] == 'function') {
+            myNewElement[a] = attributes[a]
+        } else {
+            myNewElement.setAttribute(a, attributes[a]);
+
         }
-        if (parent) parent.appendChild(myNewElement)
-        return myNewElement;
+    }
+    if (parent) parent.appendChild(myNewElement)
+    return myNewElement;
+}
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+
+
+const chooseRandom = array => {
+    return array[Math.floor(Math.random() * array.length)]
+
+}
+
+
+
+window.addEventListener("load", e => {
+
+    var data = require('./data.json');
+
+    const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+
+    data.settings = {
+        quirks: 1,
+        traits: 2,
+        race: Object.keys(data.races)[0],
+        ignoreWeights: false,
     }
 
-    String.prototype.capitalize = function() {
-        return this.charAt(0).toUpperCase() + this.slice(1);
+
+    var nameChar = document.querySelector(".name")
+    var classChar = document.querySelector(".class")
+    var careerChar = document.querySelector(".career")
+    var personalityChar = document.querySelector(".personality")
+    var quirksChar = document.querySelector(".quirks")
+    var statusChar = document.querySelector(".status")
+    var controlsChar = document.querySelector(".controls")
+    var infoChar = document.querySelector(".info")
+    var notesChar = document.querySelector(".notes")
+    // var statsChar = document.querySelector(".stats")
+    // var talentsChar = document.querySelector(".talents")
+
+
+var memory 
+    const save = () => {
+        // if (!this.memory) this.memory = document.customCreateElement('div')
+        // // const findElement = (title) => this.memory.querySelector('')
+        // console.log("saved", title, savedata)
+        // console.log(this.memory)
+
+        // why convert everything, when i can just read the page as it is and save that
+
+        infoChar.innerHTML = ""
+        memory = null
+        memory = document.querySelector(".main-container").cloneNode(true);
+        [...memory.querySelectorAll("input, textarea")]
+        // .map(e => [e.parentElement])
+        .map(e => {
+            document.customCreateElement('p', { innerText: e.value }, e.parentElement);
+            // [...e.parentElement.querySelectorAll('input, button, .hidden, .control-container, .control')].forEach(r => r.remove())
+        });
+        //filter out any shit we dont want in the file
+        [...memory.querySelectorAll('input, button, .hidden, .control-container')]
+        .forEach(r => r.remove());
+        console.log(memory)
+        var pre = document.customCreateElement('pre', {}, infoChar)
+        var code = document.customCreateElement('code', { class: 'markdown' }, pre)
+
+        code.innerHTML = toMd(memory)
+        hljs.highlightBlock(code)
+
+
     }
 
-    window.addEventListener("load", e => {
 
-        //makes the containers and inner parts that hold the cchar info
-        const makeInner = (target, title = "fck", rerollFunction, inputType = "text", customValues) => {
-            //clear the objeccts inner
-            target.innerHTML = ""
-            //make top level ccontainer
-            var container = document.customCreateElement('div', { class: 'char-info-container' })
-            document.customCreateElement('h3', { innerText: title.capitalize(), }, container)
-            //make text container, initalise with the title
+    //makes the containers and inner parts that hold the cchar info
+    const makeInner = (target, title = "fck", rerollFunction, inputType = "text", customValues = ['div', 'h4', 'input']) => {
+        //clear the objeccts inner
+        target.innerHTML = ""
+        //make top level ccontainer
+        var container = document.customCreateElement(customValues[0], { class: 'char-info-container' })
+        var containerTitle = document.customCreateElement(customValues[1], { innerText: title.capitalize(), }, container)
+        //make text container, initalise with the title
+        if (inputType == "textarea") {
+            var text = document.customCreateElement("textarea", { type: inputType, value: title }, container)
+            text.addEventListener('change', e => {
+                text.style.height = ""
+                text.style.height = text.scrollHeight + "px"
+            });
+
+        } else {
             var text = document.customCreateElement('input', { type: inputType, value: title, }, container)
-            //create the listners that will save changes 
-            text.addEventListener('change', e => console.log(e));
-            text.addEventListener('keyup', e => console.log(e));
+        }
+        //create the listners that will save changes 
+        text.addEventListener('change', e => save(title, text.value));
+        text.addEventListener('keyup', e => save(title, text.value));
 
-            //if we need to reroll this object, use the reroll function, elese dont bother making the button
-            if (rerollFunction) {
-                var reroll = document.customCreateElement('button', {
-                    innerHTML: 'Reroll',
-                    class: 'reroll-button',
-                    onclick: e => {
-                        //use the entered reroll function
-                        text.value = rerollFunction();
-                        //then dispatch a cchange event to save
-                        text.dispatchEvent(new Event('change'))
-                    }
-                }, container)
+
+        //if we need to reroll this object, use the reroll function, elese dont bother making the button
+        if (rerollFunction) {
+
+            container.reroll = e => {
+                // console.log("activated")
+                //use the entered reroll function
+                text.value = rerollFunction(e);
+                //then dispatch a cchange event to save
+                text.dispatchEvent(new Event('change'))
             }
-            //if special ccustom details are specified, use them to set the value
-            if (customValues) text.value = customValues.value
-            //attach this to the stat area
-            target.appendChild(container)
+
+            var reroll = document.customCreateElement('button', {
+                innerHTML: 'Reroll',
+                class: 'reroll-button',
+                onclick: container.reroll
+            }, container)
         }
 
+        //attach this to the stat area
+        target.appendChild(container)
+        return container
+    }
 
-        var randomName = faker.name.findName(); // Rowan Nikolaus
 
-        var nameChar = document.querySelector(".name")
-        var classChar = document.querySelector(".class")
-        var statsChar = document.querySelector(".stats")
-        var talentsChar = document.querySelector(".talents")
-        var notesChar = document.querySelector(".notes")
-        var careerChar = document.querySelector(".career")
-        var personalityChar = document.querySelector(".personality")
-        var quirksChar = document.querySelector(".quirks")
-        var statusChar = document.querySelector(".status")
-        var controlsChar = document.querySelector(".controls")
-        var infoChar = document.querySelector(".info")
-        var fields = [
-            nameChar,
-            classChar,
-            statsChar,
-            talentsChar,
-            notesChar,
-            careerChar,
-            personalityChar,
-            quirksChar,
-            statusChar,
-            controlsChar,
-            infoChar,
-        ]
-
-        fields.forEach(f => makeInner(f, f.innerText, () => faker.name.findName()))
-
-        statsChar.style.display = 'none';
-        talentsChar.style.display = 'none';
-
-        /////// #########. BEGIN SECTION WHERE NEW DATA IS PARSED FROM PREVIOUS REPOS DATASET
-        // the purpose here is to take the previous generation methods and make them a bit easier to read (by me)
-        //theyll no longer use a d100 system and will instead use a 'chanec to get' system 
-
-        var CareerHuman = [1, 2, 3, 5, 6, 11, 13, 14, 15, 17, 19, 20, 21, 23, 26, 27, 28, 29, 30, 31, 32, 35,
-            36, 37, 38, 39, 40, 42, 43, 44, 45, 50, 51, 52, 54, 56, 57, 58, 59, 60, 62, 63, 66, 68, 70, 71, 73, 74,
-            76, 77, 78, 79, 83, 86, 87, 88, 90, 92, 93, 94, 95, 99, -1, 100
-        ];
-        var CareerDwarf = [1, 4, 6, -1, 7, -1, 9, -1, 11, 17, 18, 20, 25, -1, 31, 34, 36, 37, 38, 40, 41, 42,
-            43, 45, 47, -1, -1, 49, 54, -1, 55, 56, 60, 61, 63, -1, 65, 67, -1, -1, 69, 70, 72, -1, 73, 75, 77, 78,
-            -1, -1, 79, -1, 82, 83, 84, -1, -1, 87, -1, 90, 93, 96, 100, -1
-        ];
-        var CareerHalfling = [1, 2, 4, -1, 6, -1, 8, -1, 10, 15, 19, 21, 25, 28, 31, 33, 34, 36, -1, 37, -1,
-            43, 44, 46, 47, -1, 50, 52, 53, -1, 54, 57, 58, 60, 63, -1, 65, 67, 68, -1, 69, 70, 73, 74, 75, 79, 84, -1,
-            85, 86, 87, 88, 89, 93, 94, -1, -1, 96, -1, 97, -1, 100, -1, -1
-        ];
-        var CareerHElf = [2, -1, 6, -1, 8, -1, 12, 16, -1, 19, -1, 21, 26, -1, 28, 29, 31, 32, 34, 37, 40, -1,
-            43, 45, -1, -1, 47, 50, -1, -1, 56, -1, 59, -1, 62, -1, 63, -1, -1, -1, 64, -1, -1, -1, 79, 80, -1, -1,
-            82, 85, -1, -1, 88, -1, -1, -1, 92, 94, 95, 97, 98, 100, -1, -1
-        ];
-        var CareerWElf = [-1, -1, -1, -1, -1, -1, 1, 5, -1, 10, -1, -1, -1, -1, -1, -1, 14, 18, -1, 25, 31,
-            -1, 35, -1, -1, -1, 42, 53, -1, 57, 68, -1, 70, -1, 78, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-            79, -1, -1, -1, -1, 85, -1, -1, -1, 90, 92, 94, 96, -1, 100, -1, -1
-        ];
-        var CareerGnome = [
-            1, -1, 2, -1, 4, 5, 7, 14,
-            15, 17, 18, 19, 21, 22, 28, 29,
-            30, 31, -1, 32, 33, 35, 40, 42,
-            43, -1, 44, 46, 54, -1, 58, 62,
-            63, -1, 68, -1, 69, 75, -1, -1,
-            76, -1, 80, -1, -1, 83, -1, -1,
-            85, 90, 91, -1, 92, 94, 98, -1,
-            -1, 99, -1, -1, -1, 100, -1, -1
-        ];
-
-        var classes = {
-            Academics: ["Apothecary", "Engineer", "Lawyer", "Nun", "Physician", "Priest", "Scholar", "Wizard", ],
-            Burghers: ["Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman", ],
-            Courtiers: ["Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden", ],
-            Peasants: ["Bailiff", "Hedge Witch", "Herbalist", "Hunter", "Miner", "Mystic", "Scout", "Villager", ],
-            Rangers: ["Bounty Hunter", "Coachman", "Entertainer", "Flagellant", "Messenger", "Pedlar", "Roadwarden", "Witch Hunter", ],
-            Riverfolk: ["Boatman", "Huffer", "Riverwoman", "Riverwarden", "Seaman", "Smuggler", "Stevedore", "Wrecker", ],
-            Rogues: ["Bawd", "Charlatan", "Fence", "Grave Robber", "Outlaw", "Thief", "Racketeer", "Witch", ],
-            Warriors: ["Cavalryman", "Guard", "Knight", "Pit Fighter", "Protagonist", "Soldier", "Troll Slayer", "Warrior Priest", ],
-        }
-        const findClass = career => {
-            var x = Object.keys(classes).find(rclass => classes[rclass].includes(career))
-            if (!x) throw ["cant find", career];
-            return x
-        }
+    var randomName = faker.name.findName(); // Rowan Nikolaus
 
 
 
-        var CareerAll = ["Apothecary", "Engineer", "Lawyer", "Nun",
-            "Physician", "Priest", "Scholar", "Wizard",
-            "Agitator", "Artisan", "Beggar", "Investigator",
-            "Merchant", "Rat Catcher", "Townsman", "Watchman",
-            "Advisor", "Artist", "Duellist", "Envoy",
-            "Noble", "Servant", "Spy", "Warden",
-            "Bailiff", "Hedge Witch", "Herbalist", "Hunter",
-            "Miner", "Mystic", "Scout", "Villager",
-            "Bounty Hunter", "Coachman", "Entertainer", "Flagellant",
-            "Messenger", "Pedlar", "Roadwarden", "Witch Hunter",
-            "Boatman", "Huffer", "Riverwoman", "Riverwarden",
-            "Seaman", "Smuggler", "Stevedore", "Wrecker",
-            "Bawd", "Charlatan", "Fence", "Grave Robber",
-            "Outlaw", "Racketeer", "Thief", "Witch",
-            "Cavalryman", "Guard", "Knight", "Pit Fighter",
-            "Protagonist", "Soldier", "Troll Slayer", "Warrior Priest"
-        ];
+
+    //#### NAME
+    var nameChar = makeInner(nameChar, "Name", () => faker.name.firstName() + " " + faker.name.lastName(), 'text', ['div', 'h3'])
+    //make somewhere to store the class, as the career depends on it
+    var currentClass = ""
+    var currentCareer = ""
 
 
-        var races = {
-            "Human": {},
-            "Dwarf": {},
-            "Halfling": {},
-            "High Elf": {},
-            "Wood Elf": {},
-            "Gnome": {},
-        }
 
-        var careerMapping = {
-            "Human": CareerHuman,
-            "Dwarf": CareerDwarf,
-            "Halfling": CareerHalfling,
-            "High Elf": CareerHElf,
-            "Wood Elf": CareerWElf,
-            "Gnome": CareerGnome,
-        }
 
-        var data = { careers: {}, races: JSON.parse(JSON.stringify(races)) }
-        CareerAll.forEach(c => data.careers[c] = { races: JSON.parse(JSON.stringify(races)) })
-        Object.keys(data.careers).forEach(c => Object.keys(data.careers[c].races).forEach(r => data.careers[c].races[r].chances = 0))
-        // var x = CareerHuman
-        //     .filter(val => val > 0)
-        //     .filter(val => data.careers[val])
-        //     .forEach(val => data.careers[val])
+    var statusChar = makeInner(statusChar, "Status", (e) => {
+        return chooseRandom(data.classes[currentClass][currentCareer].status)
+    })
 
-        // CareerHuman
-        // CareerAll
-        // var roll = Math.round(Math.random() * 100)
-        console.log("rolling")
+    //#### CAREER
+    //make the career holder
+    var careerChar = makeInner(careerChar, "Career", (e) => {
+        var choices = []
+        //get a list of the ccaeers
+        //get the chancces for each carreer for the selected race
+        //add them all to an array, adding more likely options more times
+        //then choose from the temp array (choices)
+        var careers = Object.entries(data.classes[currentClass]).map(i => [...Array((i[1].races[data.settings.race].chances))].map(c => choices.push(i[0])))
+        if (data.settings.ignoreWeights) choices = Object.keys(data.classes[currentClass]);
+        console.log(data.settings.race, careers, choices, "data.settings.ignoreWeights:", data.settings.ignoreWeights)
+        currentCareer = chooseRandom(choices)
+        statusChar.reroll()
+        //pick a random thing
+        return currentCareer
+    })
 
-        function findOdds(careerChoices) {
-            console.log("finding choies")
-            return [...Array(100).keys()].map(roll => {
-                var i = 0
+    //#### CLASS
+    //make the class holder
+    var classChar = makeInner(classChar, "Class", (e) => {
+        //if the class changes, reroll the career
+        currentClass = chooseRandom(Object.keys(data.classes))
+        careerChar.reroll()
+        return currentClass
+    })
+    //initalise the class, as the career depends on it
 
-                while (careerChoices[i] < roll) {
-                    i += 1;
-                }
-                return CareerAll[i]
-            })
+    //#### QUIRKS
+    //this sucks and might be removed
+    var quirksChar = makeInner(quirksChar, "Quirks", (e) => {
+        var quirks = [...Array(data.settings.quirks).keys()].map(() => chooseRandom(data.personality.quirks))
+        return formatter.format(quirks).capitalize()
+    }, "textarea")
 
-        }
-        Object.keys(careerMapping).forEach(race => {
-            console.log("race", race)
-            var careerChances = findOdds(careerMapping[race])
-            careerChances.forEach(career => {
-                // console.log(race, career, data.careers[career].races[race].chances)
-                data.careers[career].races[race].chances
-                data.careers[career].races[race].chances += 1
-            })
+    //#### personality traits
+    var personalityChar = makeInner(personalityChar, "Personality", (e) => {
+        var traits = [...Array(data.settings.traits).keys()].map(() => chooseRandom(data.personality.traits))
+        return formatter.format(traits).capitalize()
+    }, "textarea")
 
+
+
+    var generateNotes = () => {
+        notesChar.innerHTML = ""
+        var container = document.customCreateElement('div', { class: 'char-info-container' }, notesChar)
+        document.customCreateElement('h4', { innerText: "notes".capitalize(), }, container)
+        var text = document.customCreateElement("textarea", { value: "", placeholder: "Notes..." }, container)
+        text.style.width = '100%'
+        text.style["max-width"] = '100%'
+
+        text.addEventListener('change', e => {
+            text.style.height = ""
+            text.style.height = text.scrollHeight + "px"
         })
 
-
-        // data.careers[career].class = findClass(career)
-
-        data.classes = {
-            Academics: {},
-            Burghers: {},
-            Courtiers: {},
-            Peasants: {},
-            Rangers: {},
-            Riverfolk: {},
-            Rogues: {},
-            Warriors: {},
-        }
-        Object.keys(data.careers).forEach(career => data.classes[findClass(career)][career] = data.careers[career])
-
-        console.log(data)
+        text.addEventListener('change', e => save());
+        text.addEventListener('keyup', e => save());
+    }
 
 
-        // console.log(findOdds(CareerHuman))
+    var makeContainerWithTitle = (title, parent) => {
+        var container = document.customCreateElement('div', { class: 'control-container' }, parent)
+        document.customCreateElement('h5', { innerText: title.capitalize(), }, container)
+        return container
+    }
 
-        // CareerN = i;
-        // console.log()
+    var makeSelect = (title, optionArray, changeFunction, parent) => {
+        var container = makeContainerWithTitle(title, parent)
+        var select = document.customCreateElement('select', {}, container)
+        optionArray.forEach(opt => addOption(select, opt))
+        select.addEventListener('change', e => changeFunction(e));
+        select.addEventListener('keyup', e => changeFunction(e));
+        return container
+    }
+    var addOption = (ele, text) => {
+        var opt = document.createElement("option");
+        opt.value = text;
+        opt.text = text;
 
-        console.log(Math.round(Math.random() * 100))
+        ele.add(opt, null);
+    }
 
 
-        // var careers = CareerHuman.map(val => CareerAll[val])
-        console.log(CareerAll.length)
+    var generateControls = () => {
+        controlsChar.innerHTML = ""
+        var container = document.customCreateElement('div', { class: 'control-container' }, controlsChar)
+        document.customCreateElement('h4', { innerText: "controls".capitalize(), }, container)
 
 
-        ///////// ########## END GENERATION SECTION
-    })
+
+        var r = makeContainerWithTitle("Reroll All", container)
+        document.customCreateElement('button', {
+            innerHTML: 'Reroll All',
+            class: '',
+            onclick: rerollAll
+        }, r)
+
+        makeSelect('Race', Object.keys(data.races), (e) => {
+            data.settings.race = e.target.value
+            console.log(data.settings.race)
+        }, container)
+        makeSelect('Ignore career weights', ['false', 'true'], (e) => {
+            data.settings.ignoreWeights = JSON.parse(e.target.value.toLowerCase())
+            console.log("data.settings.ignoreWeights", data.settings.ignoreWeights)
+        }, container)
+
+
+
+        // document.customCreateElement('button', {
+        //     innerHTML: 'Download character',
+        //     class: '',
+        //     onclick: () => downloadMarkdown(toMd(memory ), name)
+        // }, container)
+
+        document.customCreateElement('button', {
+            innerHTML: 'Copy Char',
+            class: '',
+            onclick: () => updateClipboard(toMd(memory))
+        }, container)
+
+    }
+
+
+
+    function downloadMarkdown(md, exportName) {
+        var dataStr = "data:text/markdown;charset=utf-8," + md;
+        var downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", exportName + ".md");
+        document.body.appendChild(downloadAnchorNode); // required for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    }
+
+
+    function updateClipboard(newClip) {
+        navigator.clipboard.writeText(newClip).then(function() {
+            /* clipboard successfully set */
+        }, function() {
+            /* clipboard write failed */
+        });
+    }
+
+
+    generateNotes()
+    generateControls()
+
+    function rerollAll() {
+        classChar.reroll()
+        nameChar.reroll()
+        quirksChar.reroll()
+        personalityChar.reroll()
+    }
+
+    rerollAll()
+
+
+
+
+
+
+})
