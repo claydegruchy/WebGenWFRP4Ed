@@ -66,7 +66,9 @@ window.addEventListener("load", e => {
     // var talentsChar = document.querySelector(".talents")
 
 
-var memory 
+    const findValue = (ele) => ele.querySelector("input, textarea").value
+
+    var memory;
     const save = () => {
         // if (!this.memory) this.memory = document.customCreateElement('div')
         // // const findElement = (title) => this.memory.querySelector('')
@@ -74,6 +76,9 @@ var memory
         // console.log(this.memory)
 
         // why convert everything, when i can just read the page as it is and save that
+
+
+
 
         infoChar.innerHTML = ""
         memory = null
@@ -91,8 +96,21 @@ var memory
         var pre = document.customCreateElement('pre', {}, infoChar)
         var code = document.customCreateElement('code', { class: 'markdown' }, pre)
 
-        code.innerHTML = toMd(memory)
-        hljs.highlightBlock(code)
+        // code.innerHTML = toMd(memory)
+        // hljs.highlightBlock(code)
+
+var prebuild = `
+
+- ${findValue(nameChar)}
+    - ${findValue(classChar)} - ${findValue(careerChar)} - ${findValue(statusChar)}
+    - ${findValue(personalityChar)} - ${findValue(quirksChar)}
+    - ${findValue(notesChar)}
+
+`
+
+        code.innerHTML = prebuild
+
+
 
 
     }
